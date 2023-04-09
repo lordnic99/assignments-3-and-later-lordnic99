@@ -2,6 +2,10 @@
 # Tester script for assignment 1 and assignment 2
 # Author: Siddhant Jajoo
 
+
+make clean
+make
+
 set -e
 set -u
 
@@ -34,7 +38,7 @@ rm -rf "${WRITEDIR}"
 # create $WRITEDIR if not assignment1
 assignment=`cat ../conf/assignment.txt`
 
-if [ $assignment = 'assignment1' ]
+if [ $assignment != 'assignment1' ]
 then
 	mkdir -p "$WRITEDIR"
 
@@ -54,13 +58,14 @@ fi
 
 for i in $( seq 1 $NUMFILES)
 do
-	./writer.sh "$WRITEDIR/${username}$i.txt" "$WRITESTR"
+	./writer "$WRITEDIR/${username}$i.txt" "$WRITESTR"
 done
 
 OUTPUTSTRING=$(./finder.sh "$WRITEDIR" "$WRITESTR")
 
 # remove temporary directories
 rm -rf /tmp/aeld-data
+make clean
 
 set +e
 echo ${OUTPUTSTRING} | grep "${MATCHSTR}"
