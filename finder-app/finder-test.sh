@@ -3,8 +3,6 @@
 # Author: Siddhant Jajoo
 
 
-make clean
-make
 
 set -e
 set -u
@@ -65,7 +63,6 @@ OUTPUTSTRING=$(./finder.sh "$WRITEDIR" "$WRITESTR")
 
 # remove temporary directories
 rm -rf /tmp/aeld-data
-make clean
 
 set +e
 echo ${OUTPUTSTRING} | grep "${MATCHSTR}"
