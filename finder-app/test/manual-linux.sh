@@ -114,7 +114,7 @@ make CROSS_COMPILE
 # TODO: Copy the finder related scripts and executables to the /home directory
 # on the target rootfs
 cd $FINDER_APP_DIR
-cp -RH * $OUTDIR/rootfs/home
+# cp -R ../* $OUTDIR/rootfs/home
 
 # TODO: Chown the root directory
 cd $OUTDIR/rootfs
